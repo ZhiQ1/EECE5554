@@ -1,0 +1,224 @@
+EECE 5554 LAB 4 SELF-CHECK REPORT
+Northeastern username: zhang.zhiqi2
+Generated: Wed Nov  4 02:57:05 PM PST 2026
+Workspace: /home/jojo/EECE5554/Lab4/ros2_ws
+
+==============================================
+1. ENVIRONMENT
+==============================================
+ROS_DISTRO : jazzy
+pyserial: installed
+scipy: installed
+colcon: usage: colcon [-h] [--log-base LOG_BASE] [--log-level LOG_LEVEL]
+dialout group: PRESENT
+clock synchronized: no (yes is what you want, or the GPS delay looks wrong)
+GPS and IMU emulators, checker, and test vectors: found in /home/jojo/5554-F26/sensor_emulator
+
+==============================================
+2. PACKAGES AND BUILD
+==============================================
+gps_msgs and gps_driver, from Lab 2: found
+vn_msgs and vn_driver, from Lab 3: found
+nav_bringup with launch/nav.launch.py: found
+Building in a temporary folder, so your own build/ and install/ are untouched...
+colcon build: succeeded
+
+==============================================
+3. MESSAGE DEFINITIONS
+==============================================
+ros2 interface show gps_msgs/msg/Customrtk, top-level fields:
+    std_msgs/Header header
+    float64 latitude
+    float64 longitude
+    float64 altitude
+    float64 utm_easting
+    float64 utm_northing
+    uint8 zone
+    string letter
+    float64 hdop
+    string gpgga_read
+    uint8 fix_quality
+    uint8 num_satellites
+    float32 correction_age
+ros2 interface show vn_msgs/msg/Vectornav, top-level fields:
+    std_msgs/Header header
+    sensor_msgs/Imu imu
+    sensor_msgs/MagneticField mag_field
+    string vnymr_read
+Checking field names:
+   gps_msgs/msg/Customrtk: all required fields present
+   vn_msgs/msg/Vectornav: all required fields present
+
+==============================================
+4. ONE LAUNCH FILE, TWO DRIVERS
+==============================================
+Each round runs for 15 s: ros2 launch nav_bringup nav.launch.py gps_port:=... imu_port:=...
+The IMU emulator starts at 10 Hz every time, so /imu only reaches 40 Hz if your IMU
+driver gets its port and writes register 7.
+
+   round 1
+      GPS emulator port                  /dev/pts/2
+      IMU emulator port                  /dev/pts/3
+      /gps messages                      14 in 15 s, 14 matched to the GPS test vector
+      /gps rate                          1.00 Hz (target 1)
+      /imu messages                      575 in 15 s, 575 matched to the IMU test vector
+      /imu rate over the last 6 s        40.0 Hz (target 40)
+      IMU emulator saw register 7 = 40   yes
+      gps                                PASS
+      imu                                PASS
+
+   round 2
+      GPS emulator port                  /dev/pts/4
+      IMU emulator port                  /dev/pts/5
+      /gps messages                      14 in 15 s, 14 matched to the GPS test vector
+      /gps rate                          1.00 Hz (target 1)
+      /imu messages                      451 in 15 s, 451 matched to the IMU test vector
+      /imu rate over the last 6 s        40.0 Hz (target 40)
+      IMU emulator saw register 7 = 40   yes
+      gps                                PASS
+      imu                                PASS
+
+==============================================
+5. LAUNCH ARGUMENTS
+==============================================
+ports used: /dev/pts/2 /dev/pts/3 /dev/pts/4 /dev/pts/5
+nav.launch.py declares launch arguments: yes
+both drivers published from the ports given on the command line, in both rounds
+
+==============================================
+6. ROSBAGS
+==============================================
+   walk_circle: /home/jojo/EECE5554/Lab4/data/walk_circle
+      duration 228 s, still for the first 0 s
+      /imu 9123 messages, 40.0 Hz, largest gap 0.03 s
+      /gps 228 messages, 1.00 Hz, 228 with a fix, largest gap 1.0 s
+      GPS fix to recording: median -0.01 s
+      fix quality: RTK fixed 0%, RTK float 0%, standalone 100%
+      turned +1307 degrees about gyro z (+3.6 circles)
+      GPS path 250 m, farthest 27 m from the start, ended 3 m from it
+      FAIL: still for only 0 s at the start, needs 8 s
+      FAIL: RTK fixed or float for only 0 percent of the walk, needs 50. Wait for fix_quality 4 or 5 before you record
+      FAIL
+   walk_square: /home/jojo/EECE5554/Lab4/data/walk_square
+      duration 158 s, still for the first 0 s
+      /imu 6315 messages, 40.0 Hz, largest gap 0.03 s
+      /gps 158 messages, 1.00 Hz, 158 with a fix, largest gap 1.0 s
+      GPS fix to recording: median -0.00 s
+      fix quality: RTK fixed 0%, RTK float 0%, standalone 78%
+      turned +401 degrees about gyro z (+1.1 circles)
+      GPS path 156 m, farthest 62 m from the start, ended 7 m from it
+      FAIL: still for only 0 s at the start, needs 8 s
+      FAIL: RTK fixed or float for only 0 percent of the walk, needs 50. Wait for fix_quality 4 or 5 before you record
+      FAIL
+   car_circles: /home/jojo/EECE5554/Lab4/data/car_circles
+      duration 173 s, still for the first 46 s
+      /imu 6916 messages, 40.0 Hz, largest gap 0.03 s
+      /gps 173 messages, 1.00 Hz, 173 with a fix, largest gap 1.0 s
+      GPS fix to recording: median 0.06 s
+      fix quality: RTK fixed 0%, RTK float 0%, standalone 0%
+      turned -2158 degrees about gyro z (-6.0 circles)
+      GPS path 158 m, farthest 11 m from the start, ended 3 m from it
+      PASS
+   car_drive: /home/jojo/EECE5554/Lab4/data/car_drive
+      duration 542 s, still for the first 38 s
+      /imu 21689 messages, 40.0 Hz, largest gap 0.04 s
+      /gps 543 messages, 1.00 Hz, 543 with a fix, largest gap 1.0 s
+      GPS fix to recording: median 0.15 s
+      fix quality: RTK fixed 0%, RTK float 0%, standalone 2%
+      turned +363 degrees about gyro z (+1.0 circles)
+      GPS path 2687 m, farthest 769 m from the start, ended 1 m from it
+      turns of 45 degrees or more: 3 (aim for 10)
+      PASS
+
+   The two car files, in data/car/ (Step 14):
+   car_circles.npz: /home/jojo/EECE5554/Lab4/data/car/car_circles.npz
+      duration               183 s (at least 60)  ok
+      Ouster IMU             18349 messages, 100.0 Hz (target 100)  ok
+      LiDAR scans            367 scans, 2.0 per second, 1261 points each (median)  ok
+      vehicle speed topics   vehicle_velocity, wheel_speeds
+      PASS
+   car_drive.npz: /home/jojo/EECE5554/Lab4/data/car/car_drive.npz
+      duration               598 s (at least 240)  ok
+      Ouster IMU             59834 messages, 100.0 Hz (target 100)  ok
+      LiDAR scans            1197 scans, 2.0 per second, 2769 points each (median)  ok
+      vehicle speed topics   vehicle_velocity, wheel_speeds
+      PASS
+
+==============================================
+7. READY TO DRIVE
+==============================================
+   build              PASS
+   round1.gps         PASS
+   round1.imu         PASS
+   round2.gps         PASS
+   round2.imu         PASS
+   launch_args        PASS
+   bag_walk_circle    FAIL
+   bag_walk_square    FAIL
+
+READY TO DRIVE: NO
+Fix what failed above, on foot, before your team takes the car.
+
+==============================================
+8. GIT HYGIENE
+==============================================
+tracked files inside build/, install/, or log/: 0
+data/walk_circle: not committed yet
+data/walk_square: not committed yet
+data/car_circles: not committed yet
+data/car_drive: not committed yet
+data/car/car_circles.npz: not committed yet
+data/car/car_drive.npz: not committed yet
+
+==============================================
+9. MACHINE-READABLE SUMMARY
+==============================================
+RESULT env_ros=PASS
+RESULT env_serial=PASS
+RESULT env_emulator=PASS
+RESULT pkg_gps=PASS
+RESULT pkg_imu=PASS
+RESULT pkg_bringup=PASS
+RESULT build=PASS
+RESULT interface=PASS
+RESULT round1.gps=PASS
+RESULT round1.imu=PASS
+RESULT round2.gps=PASS
+RESULT round2.imu=PASS
+RESULT launch_args=PASS
+RESULT bag_walk_circle=FAIL
+RESULT bag_walk_square=FAIL
+RESULT bag_car_circles=PASS
+RESULT bag_car_drive=PASS
+RESULT npz_car_circles=PASS
+RESULT npz_car_drive=PASS
+RESULT gitignore=PASS
+RESULT ready_to_drive=FAIL
+
+==============================================
+10. STUDENT STATEMENT
+==============================================
+
+Complete the items below by editing this file in a text editor.
+
+YOUR TEAM, AND YOUR ROLE IN THE CAR:
+    
+
+WHERE YOU WALKED, AND THE LANDMARK YOU CIRCLED:
+    
+
+WHERE THE VN-100 AND THE ANTENNA WERE MOUNTED (x_c, y_c, x_a, y_a FROM base_link IN cm),
+AND HOW YOU LEVELED THE VN-100:
+    
+
+YOUR ROUTE (THE START AND END POINT, AND THE STREETS):
+    
+
+ONE THING THE DRY RUN CAUGHT, AND HOW YOU FIXED IT:
+    
+
+STATUS: I confirm that my launch file starts both drivers and that my four data sets
+and two car files are committed. If anything above failed, paste the exact error message and your plan
+to fix it here instead:
+    
+
