@@ -1,0 +1,23 @@
+Initial alignment rotation: -178.48 degrees
+Alignment used 16 moving samples
+Calibration interval: 48.0 to 63.0 s
+WARNING: Orientation calibrated using the first 100 m of GPS.
+Evaluate independent odometry accuracy after this interval.
+
+========= Q9 LiDAR Evaluation =========
+Evaluation duration: 597.03 s
+GPS path length: 2677.69 m
+LiDAR path length: 2687.63 m
+Scale ratio (LiDAR/GPS): 1.0037
+Endpoint position error: 93.50 m
+Endpoint error / GPS distance: 3.492%
+First exceed 2 m: 75.01 s
+First exceed 10 m: 100.97 s
+Total sampled time within 2 m: 75.01 s
+Total sampled time within 10 m: 100.97 s
+Maximum position error: 139.03 m
+Median position error: 67.81 m
+Reference: Mustang GPS, NOT RTK Fixed
+
+Saved Figure 12 GPS comparison
+Saved Q9 results and evaluation data

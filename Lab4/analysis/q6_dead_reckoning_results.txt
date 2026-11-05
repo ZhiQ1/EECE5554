@@ -1,0 +1,28 @@
+
+========== Figure 10 / Question 6 ==========
+
+Movement start: 38.58 s
+Initial heading alignment: 93.73 degrees
+Stationary gyro bias: 0.000030 rad/s
+
+GNSS path length: 2687.48 m
+IMU dead-reckoning path length: 1551.18 m
+Scale factor (IMU/GNSS): 0.5772
+
+First exceed 2 m: 5.56 s after movement
+First exceed 10 m: 41.57 s after movement
+Endpoint position error: 302.23 m
+Maximum position error: 439.97 m
+Median position error: 302.26 m
+
+GNSS fix quality counts: {1: 13, 2: 491}
+
+IMPORTANT:
+- Reference GNSS is not RTK Fixed.
+- This baseline uses corrected IMU velocity and gyro-only heading.
+- Initial heading was aligned using the first 15-100 m of GNSS.
+- The beginning of that interval is therefore not independent validation.
+- No scale correction was applied.
+- GNSS antenna-to-base_link lever arm has not been corrected.
+- Physical antenna measurements and local magnetic declination
+  are not yet available.

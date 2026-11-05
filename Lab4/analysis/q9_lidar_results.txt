@@ -1,0 +1,15 @@
+Q9 LiDAR GPS-referenced evaluation
+Evaluation duration: 597.03 s
+GPS path length: 2677.69 m
+LiDAR path length: 2687.63 m
+Scale ratio: 1.0037
+Endpoint position error: 93.50 m
+Endpoint error percentage: 3.492%
+First exceed 2 m: 75.01 s
+First exceed 10 m: 100.97 s
+Total sampled time within 2 m: 75.01 s
+Total sampled time within 10 m: 100.97 s
+Maximum error: 139.03 m
+Median error: 67.81 m
+Reference: Mustang GPS; RTK Fixed unavailable.
+Alignment: rigid transform fitted on initial 30 seconds only.

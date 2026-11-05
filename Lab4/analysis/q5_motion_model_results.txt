@@ -1,0 +1,24 @@
+========== Figure 9 / Question 5 ==========
+Sampling frequency: 40.01 Hz
+Low-pass cutoff: 1 Hz
+Initial lateral acceleration offset: -0.22477 m/s²
+Selected turn center: 450.63 s
+
+Corrected IMU velocity
+Estimated x_c: -0.9254 m
+RMS without lever-arm term: 0.3450 m/s²
+RMS with lever-arm term: 0.3436 m/s²
+Moving samples used: 14485
+
+Mustang vehicle velocity
+Estimated x_c: -0.4721 m
+RMS without lever-arm term: 0.3101 m/s²
+RMS with lever-arm term: 0.3094 m/s²
+Moving samples used: 18445
+
+IMPORTANT:
+The physical tape-measured x_c is not available.
+Check the frame orientation and accelerometer sign if
+the fitted lever arm is implausible.
+The corrected IMU speed is used for the primary model.
+The Mustang-speed model is a diagnostic comparison.

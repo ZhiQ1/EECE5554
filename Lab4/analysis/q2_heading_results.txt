@@ -1,0 +1,11 @@
+===== Heading direction check =====
+Smooth 0.5s: r=0.8962, moving samples=3287
+Smooth 1.0s: r=0.9664, moving samples=3190
+Smooth 3.0s: r=0.9900, moving samples=2707
+
+===== Cutoff comparison =====
+fc=0.00159 Hz | offset=-83.73 deg | RMS after offset=1.95 deg | median=1.53 deg
+fc=0.01590 Hz | offset=-83.46 deg | RMS after offset=4.96 deg | median=2.92 deg
+fc=0.15900 Hz | offset=-83.46 deg | RMS after offset=6.69 deg | median=3.57 deg
+
+Saved q2_cutoff_comparison.png

@@ -1,0 +1,33 @@
+
+========== Figure 8 / Question 4 ==========
+
+Laptop IMU samples: 21689
+GNSS samples: 543
+
+Selected Mustang speed: vehicle_velocity__vehicle_velocity_brake
+Inferred speed unit: m/s
+Unit conversion factor to m/s: 1.000000
+Median absolute speed difference: 0.063 m/s
+
+Initial 20 s accelerometer bias: 0.405000 m/s^2
+Initial pitch: 2.331 degrees
+Maximum absolute hill correction: 1.9064 m/s^2
+Detected stationary anchors: 5
+
+RMS speed error relative to recorded GNSS:
+  Raw integration:          87.304 m/s
+  After bias correction:    44.459 m/s
+  After hill correction:    7.730 m/s
+  After stop correction:    2.487 m/s
+  Mustang speed:            0.102 m/s
+
+GNSS fix quality counts:
+{1: 13, 2: 530}
+
+IMPORTANT:
+- Reference GNSS has no RTK Fixed coverage.
+- Speed unit was inferred by comparing candidate signals.
+- Stop constraints use vehicle speed and gyro.
+- This is a preliminary implementation requiring plot inspection.
+
+Saved Figure 8 and Q4 results.

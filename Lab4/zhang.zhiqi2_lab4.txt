@@ -199,26 +199,36 @@ RESULT ready_to_drive=FAIL
 10. STUDENT STATEMENT
 ==============================================
 
-Complete the items below by editing this file in a text editor.
-
 YOUR TEAM, AND YOUR ROLE IN THE CAR:
-    
+    Team 3. I was the navigator during the driving experiment.
 
 WHERE YOU WALKED, AND THE LANDMARK YOU CIRCLED:
-    
+    We collected the walk_circle and walk_square datasets.
 
-WHERE THE VN-100 AND THE ANTENNA WERE MOUNTED (x_c, y_c, x_a, y_a FROM base_link IN cm),
+WHERE THE VN-100 AND THE ANTENNA WERE MOUNTED
+(x_c, y_c, x_a, y_a FROM base_link IN cm),
 AND HOW YOU LEVELED THE VN-100:
-    
+    The VN-100 was secured in the trunk.
+    Exact mounting offsets were not measured.
 
 YOUR ROUTE (THE START AND END POINT, AND THE STREETS):
-    
+    We drove in the Kerry Park area of Seattle.
+    Driving was generally smooth. The recorded GPS path
+    was approximately 2.69 km and returned near its start.
 
 ONE THING THE DRY RUN CAUGHT, AND HOW YOU FIXED IT:
-    
+    Both walking recordings failed the initial stationary
+    period and RTK-quality checks. We retained the original
+    recordings and used their measured results in the analysis.
 
-STATUS: I confirm that my launch file starts both drivers and that my four data sets
-and two car files are committed. If anything above failed, paste the exact error message and your plan
-to fix it here instead:
-    
+STATUS:
+    The ROS 2 driver and car dataset checks passed.
+    The following self-check results remain unresolved:
 
+    RESULT bag_walk_circle=FAIL
+    RESULT bag_walk_square=FAIL
+    RESULT ready_to_drive=FAIL
+
+    To address these failures, we would repeat the walking
+    recordings with a stationary start and verify RTK
+    corrections before collecting new data.

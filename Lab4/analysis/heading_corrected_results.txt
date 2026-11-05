@@ -1,0 +1,13 @@
+
+========== Figures 4–7 / Heading ==========
+Car circle samples: 6916
+Car drive samples: 21689
+SVD hard-iron center X: -73.6720 µT
+SVD hard-iron center Y: 75.0507 µT
+SVD ellipse axis ratio: 1.0645
+SVD ellipse tilt: 171.31 degrees
+Calibrated circle radius: 19.2048 µT
+Gyro stationary bias: 0.0000305 rad/s
+Complementary cutoff: 0.0159 Hz
+Approximate filter time constant: 10.01 s
+WARNING: Heading axis signs require visual verification.

@@ -1,0 +1,45 @@
+Walk circle IMU samples: 9123
+Walk square IMU samples: 6315
+Walk square GPS samples: 158
+Walking calibration: VALID normalized SVD ellipse
+
+========== Figures 1–3 / Question A2 ==========
+
+walk_circle:
+  IMU samples: 9123
+  GPS samples: 228
+  Fitted hard-iron X: 10.8472 µT
+  Fitted hard-iron Y: -21.0482 µT
+  Soft-iron axis ratio: 1.3006
+  Ellipse major-axis tilt: -151.73 degrees
+  Calibrated radius: 26.3514 µT
+  Calibrated radial standard deviation:
+      5.1375 µT
+  GNSS quality counts:
+      {1: 228}
+
+walk_square:
+  IMU samples: 6315
+  GPS samples: 158
+  Estimated walking distance: 165.10 m
+  Estimated moving time: 126.00 s
+  Average walking speed: 1.310 m/s
+  GNSS endpoint closure: 6.76 m
+  Magnetic DR endpoint closure: 50.83 m
+  Gyro DR endpoint closure: 12.36 m
+  GNSS quality counts:
+      {1: 123, 2: 35}
+
+Assumed magnetic declination: 15.0 degrees
+(approximate value from teacher notes, NOT NOAA-verified)
+
+IMPORTANT:
+- Walking GNSS does not satisfy the RTK Fixed requirement.
+- Moving intervals are estimated from GNSS steps >= 0.5 m
+  and <= 4 m/s, so poor-quality GNSS may affect the result.
+- Figure 3 tracks are not GPS-aligned or scale-corrected.
+- GNSS-to-DR rotation has not been robustly estimated.
+- Sources of hard iron and physical walking observations
+  must be confirmed from actual field notes.
+
+Saved corrected Figures 1–3 and A2 results.

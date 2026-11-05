@@ -1,0 +1,15 @@
+
+car_circles
+  Clock lag L = 3.9795 s
+  Correct-sign Pearson r = 0.9999
+  Wrong-sign Pearson r = -0.9999
+
+car_drive
+  Clock lag L = 5.4213 s
+  Correct-sign Pearson r = 0.9979
+  Wrong-sign Pearson r = -0.9979
+
+Car drive clock drift
+  First-half L = 5.4373 s, r=0.9958
+  Second-half L = 5.4190 s, r=0.9987
+  Clock drift = -67.47 ppm
