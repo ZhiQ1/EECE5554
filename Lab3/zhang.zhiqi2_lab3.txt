@@ -1,6 +1,6 @@
 EECE 5554 LAB 3 SELF-CHECK REPORT
 Northeastern username: zhang.zhiqi2
-Generated: Thu Oct  8 02:21:26 PM PDT 2026
+Generated: Thu Nov  5 03:30:03 PM PST 2026
 Workspace: /home/jojo/EECE5554/Lab3/ros2_ws
 
 ==============================================
@@ -10,6 +10,7 @@ ROS_DISTRO : jazzy
 pyserial: installed
 colcon: usage: colcon [-h] [--log-base LOG_BASE] [--log-level LOG_LEVEL]
 dialout group: PRESENT
+USB latency timer on ttyUSB0: 1 ms (1 is what you want)
 IMU emulator, checker, and test vectors: found in /home/jojo/5554-F26/sensor_emulator
 
 ==============================================
@@ -41,39 +42,54 @@ Each vector runs for 14 s. The emulator starts at 10 Hz every time, so
 the rate only reaches 40 Hz if your driver writes register 7.
 
    vector: stationary (imu_stationary.txt)
-      emulator port              /dev/pts/1
-      messages received          536 in 14 s, 536 matched to sentences the emulator sent
+      emulator port              /dev/pts/6
+      messages received          534 in 14 s, 534 matched to sentences the emulator sent
       rate commands received     $VNWRG,07,40*59
       measured rate              40.0 Hz over the last 6 s (target 40), 0 repeated messages
-      header                       PASS  536/536 messages
-      gyro_accel                   PASS  536/536 messages
-      mag                          PASS  536/536 messages
-      orientation                  PASS  536/536 messages
-      raw                          PASS  536/536 messages
+      header                       PASS  534/534 messages
+      gyro_accel                   PASS  534/534 messages
+      mag                          PASS  534/534 messages
+      orientation                  PASS  534/534 messages
+      raw                          PASS  534/534 messages
 
    vector: rotation (imu_rotation.txt)
-      emulator port              /dev/pts/2
-      messages received          539 in 14 s, 539 matched to sentences the emulator sent
-      orientation                  PASS  539/539 messages
+      emulator port              /dev/pts/7
+      messages received          536 in 14 s, 536 matched to sentences the emulator sent
+      orientation                  PASS  536/536 messages
 
    vector: corrupt (imu_corrupt.txt)
-      emulator port              /dev/pts/1
-      messages received          509 in 14 s, 509 matched to sentences the emulator sent
+      emulator port              /dev/pts/6
+      messages received          498 in 14 s, 498 matched to sentences the emulator sent
+      last lines of the driver log:
+         [driver-1] Traceback (most recent call last):
+         [driver-1]   File "/tmp/tmp.adlvTBxnAr/install/vn_driver/lib/vn_driver/driver", line 33, in <module>
+         [driver-1]     sys.exit(load_entry_point('vn-driver==0.0.0', 'console_scripts', 'driver')())
+         [driver-1]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         [driver-1]   File "/tmp/tmp.adlvTBxnAr/install/vn_driver/lib/python3.12/site-packages/vn_driver/driver.py", line 134, in main
+         [driver-1]     node.run()
+         [driver-1]   File "/tmp/tmp.adlvTBxnAr/install/vn_driver/lib/python3.12/site-packages/vn_driver/driver.py", line 122, in run
+         [driver-1]     self.publisher.publish(msg)
+         [driver-1]   File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/publisher.py", line 70, in publish
+         [driver-1]     self.__publisher.publish(msg)
+         [driver-1] rclpy._rclpy_pybind11.RCLError: Failed to publish: publisher's context is invalid, at ./src/rcl/publisher.c:423
+         [ERROR] [driver-1]: process has died [pid 6708, exit code 1, cmd '/tmp/tmp.adlvTBxnAr/install/vn_driver/lib/vn_driver/driver --ros-args -r __node:=vn_
       damaged lines passed       27 while your driver kept publishing
       damaged lines published    0
 
 ==============================================
 5. LAUNCH ARGUMENT
 ==============================================
-ports used: /dev/pts/1 /dev/pts/2 /dev/pts/1
+ports used: /dev/pts/6 /dev/pts/7 /dev/pts/6
 driver.launch.py declares a launch argument: yes
 ros2 launch vn_driver driver.launch.py port:=<port> worked on all three ports
 
 ==============================================
 6. ROSBAGS
 ==============================================
-   stationary: no rosbag2 directory (metadata.yaml) under /home/jojo/EECE5554/Lab3/data/stationary
-   motion: no rosbag2 directory (metadata.yaml) under /home/jojo/EECE5554/Lab3/data/motion
+   stationary: /home/jojo/EECE5554/Lab3/data/stationary
+      duration 383.1 s, 15307 messages on /imu (vn_msgs/msg/Vectornav), 40.0 Hz
+   motion: /home/jojo/EECE5554/Lab3/data/motion
+      duration 100.0 s, 3985 messages on /imu (vn_msgs/msg/Vectornav), 39.8 Hz
 
 ==============================================
 7. GIT HYGIENE
@@ -91,8 +107,8 @@ RESULT pkg_driver=PASS
 RESULT build=PASS
 RESULT interface=PASS
 RESULT launch_arg=PASS
-RESULT bag_stationary=FAIL
-RESULT bag_motion=FAIL
+RESULT bag_stationary=PASS
+RESULT bag_motion=PASS
 RESULT gitignore=PASS
 RESULT stationary.messages=PASS
 RESULT stationary.rate_register=PASS
@@ -112,19 +128,19 @@ RESULT corrupt.reject=PASS
 9. STUDENT STATEMENT
 ==============================================
 
-Complete the items below by editing this file in a text editor.
+**WHERE YOU RECORDED THE STATIONARY DATA SET:**
 
-WHERE YOU RECORDED THE STATIONARY DATA SET (room, surface, distance from computers):
-    
+I recorded the stationary data in a room at NEU's Terry Building in Seattle. I placed the VN-100 on a table, about 40 cm away from my computer.
 
-WHO RECORDED THE MOTION DATA SET WITH YOU, AND THE MOTIONS IN ORDER:
-    
+**WHO RECORDED THE MOTION DATA SET WITH YOU, AND THE MOTIONS IN ORDER:**
 
-ONE THING THAT DID NOT WORK THE FIRST TIME, AND HOW YOU FIXED IT:
-    
+I recorded the motion data by myself. I turned the sensor, tilted it onto its side, pitched it up, tapped the table, and shook it gently.
 
-STATUS: I confirm my driver publishes Vectornav on /imu at 40 Hz and my two data
-sets are committed. If anything above failed, paste the exact error message and
-your plan to fix it here instead:
-    
+**ONE THING THAT DID NOT WORK THE FIRST TIME, AND HOW YOU FIXED IT:**
+
+At first, Ubuntu couldn't detect the VN-100 properly because of the VirtualBox USB settings. I changed the USB settings and got the sensor working on `/dev/ttyUSB0`. I also had to stop an old ROS 2 driver process that was still publishing to `/imu`. After that, all 24 checks passed.
+
+**STATUS:**
+
+My driver publishes data on `/imu` at about 40 Hz. I recorded both datasets, and the self-check passed 24/24.
 
