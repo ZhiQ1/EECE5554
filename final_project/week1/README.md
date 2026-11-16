@@ -4,7 +4,7 @@
 
 ## Gyro sign check
 
-VN-100 time was shifted by −2.8687 s onto the car PC clock. Ouster angular velocity was projected onto base_link +Z using the kit mounting rotation. The VN-100 projection uses the provisional −gz mapping. Both turns support the vertical-axis sign. The complete VN-100 mounting rotation still needs confirmation from Lab 4.
+VN-100 time was shifted by −2.8687 s onto the car PC clock. Ouster angular velocity was projected onto base_link +Z using the kit mounting rotation. Lab 4 specifies a level VN-100 mount with +X forward and +Z down. Right-handedness then gives +Y right. The nominal sensor-to-base_link rotation is a 180° roll, mapping (gx, gy, gz) to (gx, −gy, −gz). The mounting instructions give nominal axes; small installation offsets were not measured. Both turns confirm the resulting yaw sign.
 
 | Turn | Car PC time (s) | DGPS course change | Ouster integrated yaw | VN-100 integrated yaw | Median CAN steering |
 | --- | --- | ---: | ---: | ---: | ---: |

@@ -28,7 +28,11 @@ def main():
     vertical = np.array([-np.sin(pitch), np.cos(pitch)*np.sin(roll),
                          np.cos(pitch)*np.cos(roll)])
     ouster_yaw = vertical @ np.vstack([ouster["gx"], ouster["gy"], ouster["gz"]])
-    vn_yaw = -vn["gz"]  # Provisional vertical-axis mapping only.
+    # Lab 4 mounts the VN-100 level with +X forward and +Z down.
+    # A 180-degree roll converts forward-right-down to forward-left-up.
+    vn_to_base = np.diag([1, -1, -1])
+    vn_gyro = vn_to_base @ np.vstack([vn["gx"], vn["gy"], vn["gz"]])
+    vn_yaw = vn_gyro[2]
     vn_time = vn["t_laptop"] + offset["offset_s"]
     can_time, os_time, ref_time = can["t_car"], ouster["t_car"], ref["t"]
     clocks = (vn_time, can_time, os_time, ref_time)
