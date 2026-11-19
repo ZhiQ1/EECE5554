@@ -1,0 +1,78 @@
+{
+  "photos": {
+    "mural_50": {
+      "photos": 5,
+      "median_matches": 1193.5,
+      "median_inliers": 1090.0,
+      "rms_px": 1.2352543828702136,
+      "tries": 16.5
+    },
+    "mural_20": {
+      "photos": 3,
+      "median_matches": 314.5,
+      "median_inliers": 271.5,
+      "rms_px": 0.8572588165023136,
+      "tries": 22.0
+    },
+    "rotate": {
+      "photos": 3,
+      "median_matches": 154.5,
+      "median_inliers": 133.5,
+      "rms_px": 0.8784813418003994,
+      "tries": 11.5
+    },
+    "brick": {
+      "photos": 4,
+      "median_matches": 149.0,
+      "median_inliers": 117.0,
+      "rms_px": 0.9153367350917082,
+      "tries": 16.0
+    }
+  },
+  "focal_px": null,
+  "rotate_angles_deg": null,
+  "rotate_misfits": null,
+  "L_s": 5.4213,
+  "rtk_delay_s": null,
+  "vo_pairs": null,
+  "camera_lag_s": null,
+  "lag_correlation": null,
+  "pitch_correction_deg": null,
+  "yaw_correction_deg": null,
+  "ratio_before": null,
+  "ratio_after": null,
+  "ratio_slope_per_mps2": null,
+  "spread_nominal": null,
+  "spread_corrected": null,
+  "patch_spread": {
+    "corrected": null,
+    "time +0.2 s": null,
+    "no lever arm": null,
+    "heading +1 deg": null,
+    "pitch +0.5 deg": null
+  },
+  "lidar_offset_px": {
+    "straight": {
+      "nominal": null,
+      "corrected": null
+    },
+    "turn": {
+      "nominal": null,
+      "corrected": null
+    },
+    "stopped": {
+      "nominal": null,
+      "corrected": null
+    }
+  },
+  "status": "partial",
+  "antenna_assumption_m": {
+    "x": 1.55,
+    "y": 0.0
+  },
+  "limitations": [
+    "mural_20 overlap exceeds the limit by 1 percentage point",
+    "Camera and Lab 4 car timestamps do not align",
+    "Vehicle synchronization and mapping results are incomplete"
+  ]
+}

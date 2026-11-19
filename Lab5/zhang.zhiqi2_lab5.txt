@@ -1,0 +1,96 @@
+EECE 5554 Lab 5 self-check report
+Student: zhang.zhiqi2
+Date: 2026-11-19 23:28 UTC
+Machine: jojo-VirtualBox, Ubuntu 24.04.5 LTS
+Course repository: bef06a9
+
+SUMMARY
+    env=PASS
+    photos_mural_50=PASS
+    photos_mural_20=FAIL
+    photos_rotate=PASS
+    photos_brick=PASS
+    frames=FAIL
+    lab4_inputs=PASS
+    results=FAIL
+    git=PASS
+
+DETAILS
+
+== 1. Python packages and ROS 2
+   Python 3.12.3, ROS_DISTRO=jazzy
+   numpy        1.26.4
+   scipy        1.11.4
+   matplotlib   3.6.3
+   PIL          10.2.0
+   cv2          4.6.0
+   yaml         6.0.1
+   rosbag2_py   found
+      PASS
+
+== 2. Photo sets in /home/jojo/EECE5554/Lab5/data/photos
+   mural_50: 5 photos in /home/jojo/EECE5554/Lab5/data/photos/mural_50
+      01.jpg and 02.jpg: overlap  56%, 799 inliers
+      02.jpg and 03.jpg: overlap  60%, 938 inliers
+      03.jpg and 04.jpg: overlap  55%, 695 inliers
+      04.jpg and 05.jpg: overlap  62%, 798 inliers
+      ok   at least 5 photos
+      ok   every photo the same size
+      ok   every overlap between 30 and 75%
+   mural_20: 3 photos in /home/jojo/EECE5554/Lab5/data/photos/mural_20
+      01.jpg and 02.jpg: overlap  41%, 180 inliers
+      02.jpg and 03.jpg: overlap  22%, 121 inliers
+      ok   at least 3 photos
+      ok   every photo the same size
+      FAIL every overlap between 8 and 40%
+   rotate: 3 photos in /home/jojo/EECE5554/Lab5/data/photos/rotate
+      01.jpg and 02.jpg: overlap  57%, 98 inliers
+      02.jpg and 03.jpg: overlap  38%, 102 inliers
+      ok   at least 3 photos
+      ok   every photo the same size
+      ok   every overlap between 25 and 80%
+   brick: 4 photos in /home/jojo/EECE5554/Lab5/data/photos/brick
+      01.jpg and 02.jpg: overlap  67%, 47 inliers
+      02.jpg and 03.jpg: no homography found, 11 inliers
+      03.jpg and 04.jpg: overlap  86%, 98 inliers
+      ok   at least 4 photos
+      ok   every photo the same size
+
+== 3. Frame set in /home/jojo/EECE5554/Lab5/data/car_drive
+   1947 frames over 389 s, 5.0 Hz, 1224 x 1024 px, from /front_camera/image_rect
+   on your Lab 4 car file's time axis: -1133.6 to -744.4 s
+   lidar.npz: 779 scans, 21585 points each (Part 4.8 draws them on the frames)
+      ok   camera.json has K, D, the size, the pose, and the topic
+      ok   frames.csv lists 1947 frames
+      ok   frame times increase
+      ok   at least 4 minutes of frames
+      ok   frame 000000.jpg reads at the size camera.json gives
+      ok   frame 000973.jpg reads at the size camera.json gives
+      ok   frame 001946.jpg reads at the size camera.json gives
+      FAIL the frames start near your car file, so they are your drive
+
+== 4. Lab 4 inputs in /home/jojo/EECE5554/Lab4
+      ok   the laptop bag data/car_drive
+      ok   the car file data/car/car_drive.npz
+      ok   the README with L, x_a, and y_a
+
+== 5. Results file
+   25 of 50 values filled in
+
+== 6. Git hygiene
+   15 tracked files in Lab5, 0 MB
+      ok   no frame set committed (0 files of it are tracked)
+      ok   no Rerun recording committed (0 .rrd files are tracked)
+      ok   no file over 50 MB
+      ok   .gitignore keeps out data/car_drive/
+
+7. PROBLEMS AND YOUR PLAN (complete this section before you commit)
+
+ANY CHECK ABOVE THAT FAILED, THE EXACT ERROR, AND WHAT YOU DID OR WILL DO ABOUT IT:
+    
+
+WHERE YOU TOOK EACH PHOTO SET, AND WHAT YOU PHOTOGRAPHED:
+    
+
+THE STRETCH OF YOUR DRIVE YOU MAPPED IN PART 4.7, AND THE PATCH FOR FIGURE 10:
+    

@@ -17,3 +17,5 @@ __pycache__/
 # ROS bag data
 *.db3
 *.mcap
+Lab5/data/car_drive/
+*.rrd
