@@ -19,3 +19,6 @@ __pycache__/
 *.mcap
 Lab5/data/car_drive/
 *.rrd
+
+Lab5/analysis/.ipynb_checkpoints/
+Lab5/analysis/vo_nominal.npz

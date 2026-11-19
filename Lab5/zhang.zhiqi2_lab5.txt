@@ -94,3 +94,11 @@ WHERE YOU TOOK EACH PHOTO SET, AND WHAT YOU PHOTOGRAPHED:
 
 THE STRETCH OF YOUR DRIVE YOU MAPPED IN PART 4.7, AND THE PATCH FOR FIGURE 10:
     
+
+LAB 5 FINAL STATUS (PARTIAL)
+Figures 1-5 generated.
+mural_50, rotate, brick: PASS.
+mural_20: 41% overlap, above 40% limit.
+Car frame timestamps do not align with Lab 4 data.
+Results JSON contains partial measurements.
+Figures 6-10 not completed; no measurements fabricated.
