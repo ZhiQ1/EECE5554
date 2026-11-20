@@ -34,22 +34,22 @@
   "rotate_misfits": null,
   "L_s": 5.4213,
   "rtk_delay_s": null,
-  "vo_pairs": null,
-  "camera_lag_s": null,
-  "lag_correlation": null,
-  "pitch_correction_deg": null,
-  "yaw_correction_deg": null,
+  "vo_pairs": 1946,
+  "camera_lag_s": 0.0928,
+  "lag_correlation": 0.8067,
+  "pitch_correction_deg": -0.430006,
+  "yaw_correction_deg": 2.55056,
   "ratio_before": null,
   "ratio_after": null,
   "ratio_slope_per_mps2": null,
   "spread_nominal": null,
   "spread_corrected": null,
   "patch_spread": {
-    "corrected": null,
-    "time +0.2 s": null,
-    "no lever arm": null,
-    "heading +1 deg": null,
-    "pitch +0.5 deg": null
+    "corrected": 43.93,
+    "time +0.2 s": 42.7,
+    "no lever arm": 43.55,
+    "heading +1 deg": 44.14,
+    "pitch +0.5 deg": 52.65
   },
   "lidar_offset_px": {
     "straight": {
@@ -65,14 +65,16 @@
       "corrected": null
     }
   },
-  "status": "partial",
+  "status": "partial_with_figures_1_to_10",
   "antenna_assumption_m": {
     "x": 1.55,
     "y": 0.0
   },
   "limitations": [
-    "mural_20 overlap exceeds the limit by 1 percentage point",
-    "Camera and Lab 4 car timestamps do not align",
-    "Vehicle synchronization and mapping results are incomplete"
+    "mural_20 first photo pair has 41% overlap, above the 40% maximum",
+    "Camera/vehicle synchronization uses an estimated offset and is not independently verified",
+    "GPS/DGPS quality 1/2 fixes are not RTK ground truth",
+    "Pitch and yaw corrections are exploratory estimates",
+    "Some requested quantitative measurements remain unavailable"
   ]
 }

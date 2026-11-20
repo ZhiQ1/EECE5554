@@ -18,7 +18,7 @@
 - The frame timestamps do not align with the available Lab 4 car file.
 - Lab 4 clock offset: L = 5.4213 s.
 - Antenna offsets x_a = 1.55 m and y_a = 0 m are course-example assumptions, not Team 3 measurements.
-- Figures 1–5 were generated; synchronized Figures 6–10 remain incomplete.
+- Figures 1–10 have been generated. Figures 6–10 use the available car_drive recording and GPS/DGPS reference; this is not RTK ground truth.
 
 ## Analysis questions
 
@@ -38,20 +38,20 @@ The mural_50 overlaps are 56%, 60%, 55%, and 62%. The revised mural_20 overlaps 
 The road is modeled as a plane. Objects extending above that plane, changes in road elevation, and imperfect camera calibration violate the model. Figure 5 shows the initial bird's-eye projection. Pixel-to-ground resolution measurements remain to be reported.
 
 ### Q6. Camera clock
-The camera frame set runs at 5 Hz. Camera lag and correlation cannot be reliably measured because the supplied frame timestamps do not align with the available Lab 4 car file. Exposure, encoding, transmission, and buffering can introduce latency.
+The camera frame set runs at 5 Hz. Estimated camera lag is 0.0928 s, with angular-velocity correlation 0.8067, using the available recording. Exposure, encoding, transmission, and buffering can introduce latency.
 
 ### Q7. Pitch and yaw
-Small angular calibration errors can create substantial ground-projection errors at long distances. Numerical corrections and braking-induced pitch were not determined because synchronized vehicle data are unavailable.
+Small angular calibration errors can create substantial ground-projection errors at long distances. The exploratory pitch correction is -0.4300 degrees and yaw correction is +2.5506 degrees. These are calibration estimates, not independently verified ground truth.
 
 ### Q8. Error budget
-The requested map-error ranking is unavailable without a valid synchronized trajectory and Figure 9 measurements.
+Figure 9 reports mean spread: corrected 43.93, time +0.2 s 42.70, no lever arm 43.55, heading +1 degree 44.14, and pitch +0.5 degree 52.65. Lower spread is not always obtained with the nominal corrected configuration.
 
 ### Q9. Better mapping camera
 The current frame set is 1224 x 1024 at 5 Hz. A higher frame rate could reduce displacement between adjacent frames, while reliable hardware timestamps or synchronization would help motion compensation. A global shutter could reduce motion distortion. Further quantitative comparison requires synchronized motion data.
 
 ### Q10. Sensor alignment
-Numerical LiDAR-to-camera offsets and corrected overlays remain unavailable because the car and frame timelines do not match. Timing offsets primarily become more important during motion, while angular calibration errors change projected image positions.
+Figure 10 includes nominal and corrected camera views with LiDAR overlays, together with the Rerun recording. Timing offsets primarily become more important during motion, while angular calibration errors change projected image positions.
 
 ## Submission limitations
 
-This is a partial analysis. Missing measurements are explicitly reported rather than estimated without supporting data.
+Figures 1–10 have been generated. Remaining limitations include the mural_20 overlap violation, exploratory calibration estimates, and GPS/DGPS rather than RTK ground truth.
